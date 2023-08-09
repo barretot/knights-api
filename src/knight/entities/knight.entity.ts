@@ -5,14 +5,12 @@ export class Knight {
   name: string;
   nickname: string;
   birthday: string;
-  weapons: [
-    {
-      name: string;
-      mod: number;
-      attr: string;
-      equipped: boolean;
-    },
-  ];
+  weapons: {
+    name: string;
+    mod: number;
+    attr: string;
+    equipped: boolean;
+  }[];
   attributes: {
     strength: number;
     dexterity: number;
@@ -27,7 +25,7 @@ export class Knight {
     Object.assign(this, props);
 
     if (!id) {
-      id === uuid();
+      this.id === uuid();
     }
   }
 

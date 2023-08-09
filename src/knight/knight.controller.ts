@@ -33,11 +33,11 @@ export class KnightController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() knight: UpdateKnightDto) {
-    return this.knightService.update(id, knight);
+    return this.knightService.update({ id }, knight);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.knightService.remove(id);
+    return this.knightService.delete(id);
   }
 }
