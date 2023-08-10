@@ -37,6 +37,6 @@ export class KnightController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.knightService.delete(id);
+    return this.knightService.remove(id);
   }
 }

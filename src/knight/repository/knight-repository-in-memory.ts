@@ -17,8 +17,6 @@ export class KnightRepositoryInMemory implements IKnightRepository {
 
       return this.items[index];
     }
-
-    return undefined;
   }
 
   async findAll(): Promise<Knight[]> {
@@ -35,12 +33,8 @@ export class KnightRepositoryInMemory implements IKnightRepository {
     return knight;
   }
 
-  async delete(id: string): Promise<boolean> {
-    const knight = this.items.filter((item) => item['id'] !== id);
-
-    if (!knight) {
-      return false;
-    }
+  async remove(id: string): Promise<boolean> {
+    this.items.filter((item) => item['id'] !== id);
 
     return true;
   }

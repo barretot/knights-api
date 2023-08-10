@@ -1,6 +1,6 @@
 import { KnightService } from './knight.service';
 import { KnightRepositoryInMemory } from './repository/knight-repository-in-memory';
-import { KnightMock } from './mocks/create-knight-mock';
+import { KnightMockService } from './mocks/create-knight-service-mock';
 
 describe('KnightService', () => {
   let service: KnightService;
@@ -12,14 +12,14 @@ describe('KnightService', () => {
   });
 
   it('should create Knight', async () => {
-    const knight = await service.create(KnightMock);
+    const knight = await service.create(KnightMockService);
 
     expect(knigthRepository.items[0]).toEqual(knight);
   });
 
   it('should return error when create Knight', async () => {
     const copy = {
-      ...KnightMock,
+      ...KnightMockService,
       id: null,
     };
     const knight = await service.create(copy);
@@ -29,23 +29,21 @@ describe('KnightService', () => {
 
   it('should update Knight', async () => {
     const knigth = {
-      ...KnightMock,
+      ...KnightMockService,
+      id: 'fc9d2178-9856-472a-b9e5-071086cd8d76',
       name: 'Jett Name Update',
       nickname: 'King of update',
     };
 
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
-    const updatedKnight = await service.update(
-      { id: 'fc9d2178-9856-472a-b9e5-071086cd8d76' },
-      knigth,
-    );
+    const updatedKnight = await service.update({ id: knigth.id }, knigth);
 
     expect(knigthRepository.items[0]).toEqual(updatedKnight);
   });
 
   it('should listAll Knight', async () => {
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
     const allKnigths = await service.findAll();
 
@@ -53,7 +51,7 @@ describe('KnightService', () => {
   });
 
   it('should findOne Knight', async () => {
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
     const findOneKnight = await service.findOne(
       'fc9d2178-9856-472a-b9e5-071086cd8d76',
@@ -63,7 +61,7 @@ describe('KnightService', () => {
   });
 
   it('should return error when findOne Knight', async () => {
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
     expect(async () => {
       await service.findOne('fc9d2178-9856-472a-b9e5-071086cd8d7');
@@ -71,22 +69,18 @@ describe('KnightService', () => {
   });
 
   it('should delete Knight', async () => {
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
-    const findOneKnight = await service.delete(
-      'fc9d2178-9856-472a-b9e5-071086cd8d76',
-    );
-
-    console.log(findOneKnight);
+    await service.remove('fc9d2178-9856-472a-b9e5-071086cd8d76');
 
     expect(true).toEqual(true);
   });
 
   it('should return error when delete Knight', async () => {
-    await knigthRepository.create(KnightMock);
+    await knigthRepository.create(KnightMockService);
 
     expect(async () => {
-      await service.delete('fc9d2178-9856-472a-b9e5-071086cd8d7');
+      await service.remove('fc9d2178-9856-472a-b9e5-071086cd8d7');
     }).rejects.toThrow('Knight not found');
   });
 });

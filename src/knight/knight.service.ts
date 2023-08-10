@@ -33,9 +33,9 @@ export class KnightService {
     return result;
   }
 
-  async delete(id: string) {
+  async remove(id: string) {
     const findKnight = await this.knight.findOne(id);
 
-    return this.knight.delete(findKnight.id);
+    return this.knight.remove(findKnight.id);
   }
 }

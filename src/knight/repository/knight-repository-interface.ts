@@ -5,5 +5,5 @@ export interface IKnightRepository {
   update({ id }, knight: Knight): Promise<Knight>;
   findAll(): Promise<Knight[]>;
   findOne(id: string): Promise<Knight>;
-  delete(id: string): Promise<boolean>;
+  remove(id: string): Promise<boolean>;
 }

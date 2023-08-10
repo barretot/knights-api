@@ -23,7 +23,7 @@ export class Knight {
   };
   keyAttribute: string;
 
-  private constructor(props: Knight, id?: string) {
+  constructor(props: Knight, id?: string) {
     Object.assign(this, props);
 
     if (!id) {

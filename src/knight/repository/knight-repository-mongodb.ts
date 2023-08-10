@@ -13,7 +13,7 @@ export class KnightRepositoryMongoDb implements IKnightRepository {
   ) {}
 
   async create(props: Knight): Promise<Knight> {
-    const knight = (await this.knightModel.create(props)).save();
+    const knight = await this.knightModel.create(props);
 
     if (!knight) {
       throw new Error('Create Error');
@@ -31,14 +31,18 @@ export class KnightRepositoryMongoDb implements IKnightRepository {
   }
 
   async findAll(): Promise<Knight[]> {
-    return this.knightModel.find().exec();
+    const knights = await this.knightModel.find();
+
+    return knights;
   }
 
   async findOne(id: string): Promise<Knight> {
-    return this.knightModel.findById(id);
+    const knight = await this.knightModel.findById(id);
+
+    return knight;
   }
 
-  async delete(id: string): Promise<boolean> {
+  async remove(id: string): Promise<boolean> {
     const deleteKnight = await this.knightModel.findByIdAndDelete(id);
 
     if (!deleteKnight) {
