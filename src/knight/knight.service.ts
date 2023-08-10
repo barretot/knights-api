@@ -13,10 +13,6 @@ export class KnightService {
   async create(props: CreateKnightDto) {
     const knight = Knight.create(props);
 
-    if (!knight) {
-      throw new Error('Error');
-    }
-
     const result = await this.knight.create(knight);
     return result;
   }
@@ -30,15 +26,11 @@ export class KnightService {
   }
 
   async update({ id }, knight: UpdateKnightDto) {
-    try {
-      const findKnight = await this.knight.findOne(id);
+    const findKnight = await this.knight.findOne(id);
 
-      const result = await this.knight.update({ id: findKnight.id }, knight);
+    const result = await this.knight.update({ id: findKnight.id }, knight);
 
-      return result;
-    } catch (error) {
-      return 'Unexpected Error';
-    }
+    return result;
   }
 
   async delete(id: string) {

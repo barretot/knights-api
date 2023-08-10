@@ -2,7 +2,8 @@ export const KnightMock = {
   id: 'fc9d2178-9856-472a-b9e5-071086cd8d76',
   name: 'Jett',
   nickname: 'King of wind',
-  birthday: '19/09/2001',
+  birthday: new Date('1990-05-15'),
+  age: 33,
   weapons: [
     {
       name: 'sword',

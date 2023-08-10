@@ -4,8 +4,6 @@ import { Knight } from '../entities/knight.entity';
 export class KnightRepositoryInMemory implements IKnightRepository {
   items: Knight[] = [];
   async create(knight: Knight): Promise<Knight> {
-    knight.id = this.items.length + 'fc9d2178-9856-472a-b9e5-071086cd8d76';
-
     this.items.push(knight);
 
     return knight;

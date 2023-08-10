@@ -1,7 +1,8 @@
 export class CreateKnightDto {
   name: string;
   nickname: string;
-  birthday: string;
+  birthday: Date;
+  age: number;
   weapons: {
     name: string;
     mod: number;

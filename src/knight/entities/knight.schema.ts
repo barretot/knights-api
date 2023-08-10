@@ -17,7 +17,10 @@ export class KnightMongoSchema {
   nickname: string;
 
   @Prop({ required: true })
-  birthday: string;
+  birthday: Date;
+
+  @Prop()
+  age: number;
 
   @Prop([
     {
