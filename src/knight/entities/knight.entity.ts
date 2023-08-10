@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 export class Knight {
-  readonly id?: string;
+  id?: string;
   name: string;
   nickname: string;
   birthday: string;

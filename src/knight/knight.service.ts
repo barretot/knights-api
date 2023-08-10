@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateKnightDto } from './dto/create-knight.dto';
 import { UpdateKnightDto } from './dto/update-knight.dto';
 import { IKnightRepository } from './repository/knight-repository-interface';
+import { Knight } from './entities/knight.entity';
 @Injectable()
 export class KnightService {
   constructor(
@@ -10,8 +11,14 @@ export class KnightService {
   ) {}
 
   async create(props: CreateKnightDto) {
-    const result = await this.knight.create(props);
-    return result.id;
+    const knight = Knight.create(props);
+
+    if (!knight) {
+      throw new Error('Error');
+    }
+
+    const result = await this.knight.create(knight);
+    return result;
   }
 
   async findAll() {

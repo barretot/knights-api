@@ -3,8 +3,6 @@ import { IKnightRepository } from './knight-repository-interface';
 import { KnightMongoSchema } from '../entities/knight.schema';
 import { Model } from 'mongoose';
 import { Knight } from '../entities/knight.entity';
-import { CreateKnightDto } from '../dto/create-knight.dto';
-import { UpdateKnightDto } from '../dto/update-knight.dto';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -14,7 +12,7 @@ export class KnightRepositoryMongoDb implements IKnightRepository {
     private readonly knightModel: Model<KnightMongoSchema>,
   ) {}
 
-  async create(props: CreateKnightDto): Promise<Knight> {
+  async create(props: Knight): Promise<Knight> {
     const knight = (await this.knightModel.create(props)).save();
 
     if (!knight) {
@@ -24,7 +22,7 @@ export class KnightRepositoryMongoDb implements IKnightRepository {
     return props;
   }
 
-  async update({ id }, knight: UpdateKnightDto): Promise<Knight> {
+  async update({ id }, knight: Knight): Promise<Knight> {
     const findKnight = await this.knightModel.findById(id);
 
     await this.knightModel.updateOne({ _id: findKnight._id }, knight);
