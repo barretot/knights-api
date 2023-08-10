@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { KnightSchema, KnightMongoSchema } from './knight.schema';
 import { Model } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
 
 describe('KnightSchema', () => {
   let knightModel: Model<KnightMongoSchema>;
