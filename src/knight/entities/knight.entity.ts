@@ -1,18 +1,15 @@
 import { v4 as uuid } from 'uuid';
-
 export class Knight {
-  readonly id?: string;
+  id?: string;
   name: string;
   nickname: string;
-  birthday: string;
-  weapons: [
-    {
-      name: string;
-      mod: number;
-      attr: string;
-      equipped: boolean;
-    },
-  ];
+  birthday: Date;
+  weapons: {
+    name: string;
+    mod: number;
+    attr: string;
+    equipped: boolean;
+  }[];
   attributes: {
     strength: number;
     dexterity: number;
@@ -23,15 +20,14 @@ export class Knight {
   };
   keyAttribute: string;
 
-  private constructor(props: Knight, id?: string) {
-    Object.assign(this, props);
-
-    if (!id) {
-      id === uuid();
+  constructor(props: Knight) {
+    if (!props.id) {
+      this.id = uuid();
     }
+    Object.assign(this, props);
   }
 
-  static create(props: Knight) {
+  static create(props: Knight): any {
     const knight = new Knight(props);
 
     return knight;

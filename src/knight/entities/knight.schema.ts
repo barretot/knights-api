@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Date, HydratedDocument } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
+import { Knight } from './knight.entity';
 
-export type KnightDocument = HydratedDocument<KnightMongoSchema>;
+export type KnightDocument = HydratedDocument<Knight>;
 
 @Schema()
 export class KnightMongoSchema {
@@ -16,7 +17,7 @@ export class KnightMongoSchema {
   nickname: string;
 
   @Prop({ required: true })
-  birthday: string;
+  birthday: Date;
 
   @Prop([
     {
