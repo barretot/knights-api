@@ -1,12 +1,9 @@
 import { v4 as uuid } from 'uuid';
-import * as moment from 'moment';
-
 export class Knight {
   id?: string;
   name: string;
   nickname: string;
   birthday: Date;
-  age: number;
   weapons: {
     name: string;
     mod: number;
@@ -23,20 +20,15 @@ export class Knight {
   };
   keyAttribute: string;
 
-  constructor(props: Knight, id?: string) {
-    Object.assign(this, props);
-
-    if (!id) {
+  constructor(props: Knight) {
+    if (!props.id) {
       this.id = uuid();
     }
+    Object.assign(this, props);
   }
 
-  static create(props: Knight) {
+  static create(props: Knight): any {
     const knight = new Knight(props);
-
-    const getAge = moment(knight.birthday, 'YYYY-MM-DD').fromNow();
-
-    knight.age = parseInt(getAge, 10);
 
     return knight;
   }

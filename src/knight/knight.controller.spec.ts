@@ -28,7 +28,6 @@ describe('KnightController', () => {
               name: 'Jett Name Update',
               nickname: 'King of update',
               birthday: new Date('1990-05-15'),
-              age: 33,
               weapons: [
                 {
                   name: 'sword',
@@ -63,7 +62,6 @@ describe('KnightController', () => {
         name: 'Jett',
         nickname: 'King of wind 2',
         birthday: new Date('1990-05-15'),
-        age: 33,
         weapons: [
           {
             name: 'sword',

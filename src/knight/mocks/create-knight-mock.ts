@@ -2,7 +2,6 @@ export const KnightMock = {
   name: 'Jett',
   nickname: 'King of wind',
   birthday: new Date('1990-05-15'),
-  age: 33,
   weapons: [
     {
       name: 'sword',

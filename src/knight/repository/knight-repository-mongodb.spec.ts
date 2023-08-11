@@ -11,7 +11,7 @@ describe('KnightRepositoryMongoDb', () => {
   let knightModel: Model<Knight>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       providers: [
         KnightRepositoryMongoDb,
         {
@@ -23,7 +23,6 @@ describe('KnightRepositoryMongoDb', () => {
               name: 'Jett Name Update',
               nickname: 'King of update',
               birthday: new Date('1990-05-15'),
-              age: 33,
               weapons: [
                 {
                   name: 'sword',
@@ -55,8 +54,10 @@ describe('KnightRepositoryMongoDb', () => {
       ],
     }).compile();
 
-    repository = module.get<KnightRepositoryMongoDb>(KnightRepositoryMongoDb);
-    knightModel = module.get<Model<Knight>>(getModelToken('Knight'));
+    repository = moduleRef.get<KnightRepositoryMongoDb>(
+      KnightRepositoryMongoDb,
+    );
+    knightModel = moduleRef.get<Model<Knight>>(getModelToken('Knight'));
   });
 
   it('should be defined', () => {
@@ -69,7 +70,6 @@ describe('KnightRepositoryMongoDb', () => {
         name: 'Jett 2',
         nickname: 'King of wind 2',
         birthday: new Date('1990-05-15'),
-        age: 33,
         weapons: [
           {
             name: 'sword',

@@ -1,6 +1,7 @@
 import { KnightService } from './knight.service';
 import { KnightRepositoryInMemory } from './repository/knight-repository-in-memory';
 import { KnightMockService } from './mocks/create-knight-service-mock';
+import { Test, TestingModule } from '@nestjs/testing';
 
 describe('KnightService', () => {
   let service: KnightService;
@@ -9,6 +10,9 @@ describe('KnightService', () => {
   beforeEach(() => {
     knigthRepository = new KnightRepositoryInMemory();
     service = new KnightService(knigthRepository as any);
+  });
+  it('should be defined', () => {
+    expect(service).toBeDefined();
   });
 
   it('should create Knight', async () => {

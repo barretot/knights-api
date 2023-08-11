@@ -4,7 +4,6 @@ export const FindAllKnigthMock = [
     name: 'Jett',
     nickname: 'King of wind',
     birthday: new Date('1990-05-15'),
-    age: 33,
     weapons: [
       {
         name: 'sword',
@@ -28,7 +27,6 @@ export const FindAllKnigthMock = [
     name: 'Sage',
     nickname: 'King of wind',
     birthday: new Date('1990-05-15'),
-    age: 33,
     weapons: [
       {
         name: 'sword',
@@ -52,7 +50,6 @@ export const FindAllKnigthMock = [
     name: 'KAY/O',
     nickname: 'King of wind',
     birthday: new Date('1990-05-15'),
-    age: 33,
     weapons: [
       {
         name: 'sword',

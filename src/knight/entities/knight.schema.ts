@@ -19,9 +19,6 @@ export class KnightMongoSchema {
   @Prop({ required: true })
   birthday: Date;
 
-  @Prop()
-  age: number;
-
   @Prop([
     {
       name: { type: String, required: true },
