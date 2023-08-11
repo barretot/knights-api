@@ -3,8 +3,6 @@ import { CreateKnightDto } from './dto/create-knight.dto';
 import { UpdateKnightDto } from './dto/update-knight.dto';
 import { IKnightRepository } from './repository/knight-repository-interface';
 import { Knight } from './entities/knight.entity';
-import { left, right } from '../shared';
-
 @Injectable()
 export class KnightService {
   constructor(
@@ -16,10 +14,6 @@ export class KnightService {
     const knight = Knight.create(props);
 
     const result = await this.knight.create(knight);
-
-    if (!result) {
-      return left(new Error('MongoDB: Create Error'));
-    }
 
     return result;
   }
