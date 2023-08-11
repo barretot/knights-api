@@ -1,9 +1,9 @@
 import { Knight } from '../entities/knight.entity';
 
-export interface IKnightRepository {
+export interface IKnightGateway {
   create(knight: Knight): Promise<Knight>;
-  update({ id }, knight: Knight): Promise<Knight>;
+  updateOne(knight: Knight): Promise<Knight>;
   findAll(): Promise<Knight[]>;
-  findOne(id: string): Promise<Knight>;
-  remove(id: string): Promise<boolean>;
+  findOne(id: string): Promise<boolean>;
+  delete(id: string): Promise<void>;
 }

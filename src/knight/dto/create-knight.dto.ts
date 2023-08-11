@@ -1,13 +1,15 @@
 export class CreateKnightDto {
   name: string;
   nickname: string;
-  birthday: Date;
-  weapons: {
-    name: string;
-    mod: number;
-    attr: string;
-    equipped: boolean;
-  }[];
+  birthday: string;
+  weapons: [
+    {
+      name: string;
+      mod: number;
+      attr: string;
+      equipped: boolean;
+    },
+  ];
   attributes: {
     strength: number;
     dexterity: number;
