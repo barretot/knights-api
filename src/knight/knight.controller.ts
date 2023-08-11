@@ -10,7 +10,6 @@ import {
 import { KnightService } from './knight.service';
 import { CreateKnightDto } from './dto/create-knight.dto';
 import { UpdateKnightDto } from './dto/update-knight.dto';
-import { Knight } from './entities/knight.entity';
 
 @Controller('knight')
 export class KnightController {
@@ -33,7 +32,7 @@ export class KnightController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() knight: UpdateKnightDto) {
-    return this.knightService.update(id, knight);
+    return this.knightService.update({ id }, knight);
   }
 
   @Delete(':id')
